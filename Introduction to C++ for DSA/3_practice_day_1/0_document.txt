@@ -1,0 +1,6 @@
+Platform: Codeforces
+Topics: Basic C++, Dynamic Memory Allocations
+Link: https://docs.google.com/document/d/1oHwyJVnvl6wFvXi-NAKLUab_I4rzrTkw/edit
+Language: C++
+Date: 2025-11-21
+Status: Solved

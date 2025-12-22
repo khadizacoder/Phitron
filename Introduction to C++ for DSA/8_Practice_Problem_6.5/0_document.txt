@@ -1,0 +1,6 @@
+Platform: Codeforces
+Topics: String Class, Stringstream
+Link: https://docs.google.com/document/d/12efBIhlH8-L1pAXMmYqpPLnYVl2ZP7L4/edit
+Language: C++
+Date: 2025-12-01
+Status: Solved
