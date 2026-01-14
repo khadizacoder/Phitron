@@ -3,9 +3,9 @@ using namespace std;
 class Node
 {
     public:
-    int val;
-    Node* next;
-    Node* prev;
+        int val;
+        Node* next;
+        Node* prev;
     Node(int val)
     {
         this->val = val;
@@ -13,6 +13,17 @@ class Node
         this->prev = NULL;
     }
 };
+
+void print_prowerd(Node* head)
+{
+    Node* tmp = head;
+    while (tmp != NULL)
+    {
+        cout << tmp->val << " ";
+        tmp = tmp->next;
+    }
+    cout << endl;
+}
 
 void insert_at_tail(Node* &head, Node* &tail, int val)
 {
@@ -28,15 +39,34 @@ void insert_at_tail(Node* &head, Node* &tail, int val)
     tail = newNode;
 }
 
-void print_forword(Node* head)
+int sz(Node* head)
 {
-    Node* tmp = head;
-    while (tmp != NULL)
+    int cnt = 0;
+    while (head != NULL)
     {
-        cout << tmp->val << " ";
-        tmp = tmp->next;
+        cnt++;
+        head = head->next;
     }
-    cout << endl;
+    return cnt;
+}
+
+void check_same_or_not(Node* head1, Node* head2)
+{
+    while (head1 != NULL)
+    {
+        if(head1->val != head2->val)
+        {
+            cout << "NO" << endl;
+            break;
+        }
+        else{
+            cout << "YES" << endl;
+            break;
+        }
+        head1 = head1->next;
+        head2 = head2->next;
+    }
+    
 }
 
 int main()
@@ -44,12 +74,10 @@ int main()
     Node* head = NULL;
     Node* tail = NULL;
 
-    Node* head2 = NULL;
-    Node* tail2 = NULL;
-
     int val;
-    while (cin >> val)
+    while (true)
     {
+        cin >> val;
         if(val == -1)
         {
             break;
@@ -57,18 +85,30 @@ int main()
         insert_at_tail(head, tail, val);
     }
 
-    while (cin >> val)
+    Node* head2 = NULL;
+    Node* tail2 = NULL;
+
+    int val2;
+    while (true)
     {
-        if(val == -1)
+        cin >> val2;
+        if(val2 == -1)
         {
             break;
         }
-        insert_at_tail(head2, tail2, val);
+        insert_at_tail(head2, tail2, val2);
     }
 
-    print_forword(head);
-    print_forword(head2);
+    if(sz(head) == sz(head2))
+    {
+        check_same_or_not(head, head2);
+    }
+    else{
+        cout << "NO" << endl;
+    }
     
+    // print_prowerd(head);
+    // print_prowerd(head2);
 
     return 0;
 }
