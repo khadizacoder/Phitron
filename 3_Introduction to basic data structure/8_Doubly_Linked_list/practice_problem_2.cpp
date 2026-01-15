@@ -31,9 +31,9 @@ void insert_tail(Node* &head, Node* &tail, int val)
 void print_backword(Node* tail)
 {
     Node* tmp = tail;
-    while (tail->prev != NULL)
+    while (tmp != NULL)
     {
-        cout << tail->val << " ";
+        cout << tmp->val << " ";
         tmp = tmp->prev;
     }
     cout << endl;
