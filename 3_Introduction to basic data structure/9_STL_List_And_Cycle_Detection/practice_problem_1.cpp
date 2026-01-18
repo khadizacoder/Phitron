@@ -1,57 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
-class Node
-{
-    public:
-    int val;
-    Node* next;
-    Node* prev;
-    Node(int val)
-    {
-        this->val = val;
-        this->next = NULL;
-        this->prev = NULL;
-    }
-};
-
-void insert_at_tail(Node* &head, Node* &tail, int val)
-{
-    Node* newNode = new Node(val);
-    if(head == NULL)
-    {   
-        head = newNode;
-        tail = newNode;
-        return;
-    }
-    tail->next = newNode;
-    newNode->prev = tail;
-    tail = newNode;
-}
-
-void print_forword(Node* head)
-{
-    Node* tmp = head;
-    while (tmp != NULL)
-    {
-        cout << tmp->val <<" ";
-        tmp = tmp->next;
-    }
-}
-
 int main()
 {
-    Node* head = NULL;
-    Node* tail = NULL;
-
+    list<int> l;
+    list<int> l2;
     int val;
-    while (true)
+    while (cin >> val)
     {
-        cin >> val;
         if(val == -1) break;
-        insert_at_tail(head, tail, val);
+        l.push_back(val);
     }
 
-    print_forword(head);
+    int val2;
+    while (cin >> val2)
+    {
+        if(val2 == -1) break;
+        l2.push_back(val2);
+    }
+
+    // for(int v : l)
+    // {
+    //     cout << v << " ";
+    // }
+
+    if(l.size() != l2.size())
+    {
+        cout << "NO" << endl;
+    }else{
+        bool flag = true;
+        for(int i = 0; i < l.size() && i < l2.size(); i++)
+        {
+            if(l != l2){
+                flag = false;
+                break;
+            }
+        }
+        if(flag) cout << "YES" << endl;
+        else cout << "NO" << endl;
+    }
     
     return 0;
 }
