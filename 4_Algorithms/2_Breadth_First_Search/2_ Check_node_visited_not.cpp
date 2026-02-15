@@ -10,21 +10,21 @@ void bfs(int src)
     q.push(src);
     vis[src] = true;
 
-    while(!q.empty())
+    while (!q.empty())
     {
         int parent = q.front();
         q.pop();
 
-        cout << parent << " ";
-
-        for(int child : adj_list[parent]){
-            if(vis[child] == false)
+        for(int child: adj_list[parent])
+        {
+            if(!vis[child])
             {
                 q.push(child);
                 vis[child] = true;
             }
         }
     }
+    
 }
 
 int main()
@@ -32,8 +32,7 @@ int main()
     int n, e;
     cin >> n >> e;
 
-    while (e--)
-    {
+    while(e--){
         int a, b;
         cin >> a >> b;
         adj_list[a].push_back(b);
@@ -41,7 +40,13 @@ int main()
     }
 
     memset(vis, false, sizeof(vis));
-    bfs(0);
+    int src, dst;
+    cin >> src >> dst;
+    bfs(src);
+
+    if(vis[dst])
+        cout << "YES \n";
+    else cout << "NO \n";
 
     return 0;
 }
