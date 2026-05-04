@@ -4,41 +4,39 @@
 using namespace std;
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
     int t;
     cin >> t;
     while (t--)
     {
-        int n, w;
-        cin >> n >> w;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++)
-            cin >> a[i];
+        int n, m;
+        cin >> n >> m;
 
-        sort(a.begin(), a.end(), greater<int>());
-
-        vector<bool> usedVal(n, false);
-        int ans = 0;
-        int idx = 0;
-
-        while(idx < n)
+        multiset<int> ms;
+        for(int i = 0; i < n; i++)
         {
-            int width = w;
-            for(int i = 0; i < n; i++)
-            {
-                if(!usedVal[i] && a[i] <= width)
-                {
-                    width-=a[i];
-                    usedVal[i]=true;
-                    idx++;
-                }
-            }
-            ans++;
+            int x;
+            cin >> x;
+            ms.insert(x);
         }
-        cout << ans << '\n';
-    }
 
+        int min_heigth = 1, w = m;
+        while(!ms.empty())
+        {
+            auto it = ms.upper_bound(w);
+
+            if(it != ms.begin())
+            {
+                it--;
+                w-=*it;
+                ms.erase(it);
+            }
+            else{
+                min_heigth++;
+                w=m;
+            }
+        }
+        cout << min_heigth << '\n';
+    }
+    
     return 0;
 }
