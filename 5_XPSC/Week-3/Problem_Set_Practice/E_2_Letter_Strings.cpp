@@ -15,32 +15,30 @@ int main()
     {
         int n;
         cin >> n;
-        multiset<pair<char, char>> ms;
-        for (int i = 0; i < n; i++)
+
+        ll ans = 0;
+        map<char,int> first, sec;
+        map<string,int> total;
+
+        while(n--)
         {
-            char x, y;
-            cin >> x >> y;
-            ms.insert({x,y});
+            string st;
+            cin >> st;
+
+            char a = st[0];
+            char b = st[1];
+
+            int curr = first[a] + sec[b];
+            int extra = 2 * total[st];
+
+            ans+=curr-extra;
+
+            first[a]++;
+            sec[b]++;
+            total[st]++;
         }
 
-        long long int cnt = 0;
-        for (int i = 0; i < n; i++)
-        {
-            auto it = ms.begin();
-
-            // if(ms.find(it->first) )
-
-
-            // for (int j = i + 1; j < n; j++)
-            // {
-            //     if (a[i] == a[j])
-            //         continue;
-            //     else if (a[i].first == a[j].first || a[i].second == a[j].second)
-            //         cnt++;
-            // }
-        }
-
-        cout << cnt << '\n';
+        cout << ans << nl;
     }
     return 0;
 }
