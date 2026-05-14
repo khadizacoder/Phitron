@@ -1,3 +1,6 @@
+// Problem Link: https://codeforces.com/problemset/problem/1873/D
+// Topic : single pointer traversal
+
 #include <bits/stdc++.h>
 #define ll long long int
 #define all(x) x.begin(), x.end()
@@ -9,31 +12,25 @@ using namespace std;
 int main()
 {
     int t;
-    cin>> t;
-    while(t--)
+    cin >> t;
+    while (t--)
     {
         int n, k;
         cin >> n >> k;
         string s;
         cin >> s;
 
-        int l = 0, r = 0, sum = 0;
-        while(r < n)
+        int l = 0, sum = 0;
+        while (l < n)
         {
-            if(s[r] == 'B')
+            if (s[l] == 'B')
             {
-                if(r-l+1 == k)
-                {
-                    sum+=1;
-                    l+=k;
-                    r++;
-                }
-                else r++;
+                sum += 1;
+                l += k;
             }
             else
             {
                 l++;
-                r++;
             }
         }
         cout << sum << nl;
