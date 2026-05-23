@@ -13,22 +13,20 @@ int main()
     vector<int> a(n);
     for(int i = 0; i < n; i++) cin >> a[i];
 
-    int l = 0, r = 0, sum = 0, ans = 0;
-    while(l < r)
+    ll l = 0, r = 0, sum = 0, ans = 0;
+    while(r < n)
     {
-        if(sum == x) break;
-        if(sum + a[r] > x)
+        sum+=a[r];
+
+        while(l < r && sum > x)
         {
-            sum+=a[l];
+            sum-=a[l];
             l++;
-            ans++;
         }
-        else
-        {
-            sum+=a[r];
-            r--;
-            ans++;
-        }
+
+        if(sum == x) ans++;
+
+        r++;
     }
     cout << ans << nl;
 
