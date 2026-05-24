@@ -18,46 +18,28 @@ int main()
     while(t--)
     {
         int n; cin >> n;
-        vector<int> a(n);
-        for(int i = 0; i < n; i++) cin >> a[i];
+        vector<int> a(n + 1);
+        for(int i = 1; i <= n; i++) cin >> a[i];
 
-        vector<int> pre(n);
-        pre[0] = a[0];
-        for(int i = 1; i < n; i++)
+        vector<int> pre(n + 1, INT_MAX), suff(n+2, INT_MIN);
+        for(int i = 1; i <= n; i++)
         {
             pre[i] = min(pre[i-1], a[i]);
         }
 
-        vector<int> suff(n);
-        suff[n-1] = a[n-1];
-        for(int i = n-2; i >= 0; i--)
+        for(int i = n; i >= 1; i--)
         {
             suff[i] = max(suff[i+1], a[i]);
         }
 
-        string st1 = "";
-        string st2 = "";
-        string st3 = "";
-
-        for(int i = 0; i < n; i++)
+        for(int i = 1; i <= n; i++)
         {
-            if(pre[i] == pre[i-1]) break;
-            st1.push_back('1');
+            if(a[i] == pre[i] || a[i] == suff[i])
+                cout << 1;
+            else cout << 0;
         }
 
-        for(int i = n-1; i >= 0; i--)
-        {
-            if(suff[i] == suff[i+1]) break;
-            st2.push_back('1');
-        }
-
-        int v = n - (st1.size() + st2.size());
-
-        for(int i = 0; i < v; i++)
-            st3.push_back('0');
-
-        // for(int v : pre) cout << v << " ";
-        cout << st1 << st3 << st2 << nl;
+        cout << nl;
     }
 
     return 0;
