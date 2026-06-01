@@ -20,7 +20,7 @@ int main()
         int n, k; cin >> n >> k;
         string s; cin >> s;
 
-        int good = 0, bad = 0, zero = 0, one = 0;
+        int good = 0, bad = 0, one = 0, zero = 0;
         for(int i = 0; i < n/2; i++)
         {
             if(s[i] == s[n-i-1])
@@ -35,14 +35,14 @@ int main()
         if(good == k) cout << "YES\n";
         else if(good < k)
         {
-            int banabo = k - good;
-            if(banabo % 2 == 0 && bad >= banabo)
+            int lagbe = k - good;
+            if(lagbe % 2 == 0 && bad >= lagbe)
                 cout << "YES\n";
             else cout << "NO\n";
         }
         else{
             int komabo = good - k;
-            if(komabo % 2 == 0 && komabo <= 2*one && komabo <= 2*zero)
+            if(komabo % 2 == 0 && komabo <= 2*zero && komabo <= 2*one)
                 cout << "YES\n";
             else cout << "NO\n";
         }
