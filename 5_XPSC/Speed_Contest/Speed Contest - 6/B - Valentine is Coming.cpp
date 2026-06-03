@@ -14,20 +14,21 @@ int main()
 {
     fastIO();
 
-    int t; cin >> t;
-    while(t--)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        int b, c;
-         cin >> b >> c;
+        int x, y;
+        cin >> x >> y;
 
-         int a = 1;
-         while(a*b % c != 0)
-         {
-            a++;
-         }
-         cout << a << nl;
+        if (x < y)
+        {
+            cout << 0 << nl;
+        }
+        else{
+            cout << x / y << nl;
+        }
     }
 
     return 0;
 }
-
