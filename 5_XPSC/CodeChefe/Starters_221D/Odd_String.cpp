@@ -30,6 +30,7 @@ int main()
         }
 
         bool ok = true;
+        
         // for (int i = 0; i < n; i++)
         // {
         //     for(int j = i+1; j < n; j++)
@@ -45,6 +46,7 @@ int main()
         //         }
         //     }
         // }
+
         for(int i = 0; i < 26; i++)
         {
             if(freq[i] > 2)

@@ -40,6 +40,5 @@ int main()
         }
         cout << cnt << nl;
     }
-
     return 0;
 }
