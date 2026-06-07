@@ -11,3 +11,8 @@ def sum(num1, num2):
 
 ans = sum(3,6)
 print(ans)
+
+def f(n):
+    return n * n;
+
+print(f(10))
