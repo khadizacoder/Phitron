@@ -21,20 +21,13 @@ int main()
         vector<int> a(n);
         for(int &i : a) cin >> i;
 
-        int cnt = 0;
+        int ans = a[0];
         for(int i = 0; i < n; i++)
         {
-            for(int j = 0; j < n; j++)
-            {
-                int x = i ^ a[j];
-                if(x < a[j])
-                {
-                    cnt++;
-                }
-            }
+            ans = ans & a[i];
         }
 
-        cout << cnt << nl;
+        cout << ans << nl;
     }
 
     return 0;

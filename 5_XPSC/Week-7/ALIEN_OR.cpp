@@ -17,7 +17,36 @@ int main()
     int t; cin >> t;
     while(t--)
     {
-        
+        int n, k; cin >> n >> k;
+        vector<string> a(n);
+        for(auto &i: a) cin >> i;
+
+        string target(k, '0');
+        string ans = "YES";
+
+        for(int i = 0; i < k; i++)
+        {
+            target[i] = '1';
+
+            int flag = 0;
+            for(auto v : a)
+            {
+                if(v == target)
+                {
+                    flag = 1;
+                    break;
+                }
+            }
+
+            if(flag == 0)
+            {
+                ans = "NO";
+            }
+
+            target[i] = '0';
+        }
+
+        cout << ans << nl;
     }
 
     return 0;
