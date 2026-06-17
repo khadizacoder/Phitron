@@ -17,20 +17,11 @@ int main()
     int t; cin >> t;
     while(t--)
     {
-        vector<char> a(6);
+        int n; cin >> n;
+        vector<int> a(n);
         for(auto &i : a) cin >> i;
 
-        int ans = 0;
-        for(int i = 0; i < 6; i++)
-        {
-            if(a[i] == 'W') ans++;
-            else ans = 0;
-
-            if(ans == 3) break;
-        }
         
-        if(ans >= 3) cout << "YES\n";
-        else cout << "NO\n";
     }
 
     return 0;
