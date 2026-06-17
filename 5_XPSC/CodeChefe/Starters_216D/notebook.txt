@@ -1,0 +1,11 @@
+D number solution observation
+
+a XOR b = |a-b|
+
+⇒ a+b = (a XOR b)+2(a AND b)
+
+⇒ min(a,b)=a AND b
+
+⇒ smaller number's set bits ⊆ larger number's set bits
+
+⇒ Longest Bitwise Subset Chain
