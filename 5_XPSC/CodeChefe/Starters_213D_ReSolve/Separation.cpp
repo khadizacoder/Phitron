@@ -19,29 +19,27 @@ int main()
     {
         int n, x; cin >> n >> x;
         vector<int> a(n);
-        int mx = 0;
+
         for(int &i:a) 
         {
             cin >> i;
-            mx = max(mx, i);
         }
 
-        bool ok = false;
+        int up = 0, down = 0, eq = 0;
         for(int i = 0; i < n; i++)
         {
-            if(a[i] == x)
-            {
-                ok = true; 
-                break;
-            }
+            if(a[i] == x) eq++;
+            else if(a[i] > x) up++;
+            else if(a[i] < x) down++;
         }
 
-        if(ok || x > mx)
+        if(up == 0 || down == 0)
         {
             cout << "Yes\n";
         }
         else{
-            cout << "No\n";
+            if(eq >= 1) cout << "Yes\n";
+            else cout << "No\n";
         }
     }
 
