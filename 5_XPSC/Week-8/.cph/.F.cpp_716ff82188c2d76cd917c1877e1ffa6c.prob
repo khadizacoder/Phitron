@@ -1,0 +1,1 @@
+{"name":"Local: F","url":"c:\\Users\\myjan\\OneDrive\\Desktop\\Phitron\\5_XPSC\\Week-8\\F.cpp","tests":[{"id":1782477063080,"input":"3\n3 4\n2 8\n123 123\n","output":"81\n256\n921450052\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\myjan\\OneDrive\\Desktop\\Phitron\\5_XPSC\\Week-8\\F.cpp","group":"local","local":true}

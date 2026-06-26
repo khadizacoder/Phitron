@@ -1,3 +1,5 @@
+// Link: https://codeforces.com/problemset/problem/1618/C
+
 #include <bits/stdc++.h>
 #define ll long long int
 #define ld long double
@@ -18,11 +20,11 @@ int main()
     vector<ll> divisor;
     for(ll i = 1; i*i <= n; i++)
     {
-        if(n%i == 0)
+        if(n % i == 0)
         {
             divisor.push_back(i);
             if((n/i) != i)
-                divisor.push_back(n/i);
+                divisor.push_back((n/i));
         }
     }
 
@@ -30,8 +32,8 @@ int main()
 
     if(divisor.size() < k)
         cout << -1 << nl;
-    else 
+    else
         cout << divisor[k-1] << nl;
-
+    
     return 0;
 }

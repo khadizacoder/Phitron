@@ -1,3 +1,5 @@
+// Link : https://codeforces.com/problemset/problem/1618/C
+
 #include <bits/stdc++.h>
 #define ll long long int
 #define ld long double
@@ -17,45 +19,32 @@ int main()
     int t; cin >> t;
     while(t--)
     {
-        ll n; cin >> n;
-        vector<ll>a(n);
+        int n; cin >> n;
+        vector<ll> a(n);
         for(auto &i:a) cin >> i;
 
-        ll G1 = 0, G2 = 0;
+        ll GCD1 = 0, GCD2 = 0;
         for(int i = 0; i < n; i+=2)
-        {
-            G1 = __gcd(G1, a[i]);
-        }
+            GCD1 = __gcd(GCD1, a[i]);
 
         for(int i = 1; i < n; i+=2)
-        {
-            G2 = __gcd(G2, a[i]);
-        }
-
+            GCD2 = __gcd(GCD2, a[i]);
+            
         ll ans = 0;
         bool ok = true;
         for(int i = 1; i < n; i+=2)
-        {
-            if(a[i] % G1 == 0)
-            {
+            if(a[i] % GCD1 == 0)
                 ok = false;
-                break;
-            }
-        }
 
-        if(ok) ans = G1;
+        if(ok)
+            ans = GCD1;
         else{
             ok = true;
             for(int i = 0; i < n; i+=2)
-            {
-                if(a[i] % G2 == 0)
-                {
+                if(a[i] % GCD2 == 0)
                     ok = false;
-                    break;
-                }
-            }
 
-            if(ok) ans = G2;
+            if(ok) ans = GCD2;
         }
 
         cout << ans << nl;

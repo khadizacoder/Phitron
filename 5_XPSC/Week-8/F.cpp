@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <numeric>
 #define ll long long int
 #define ld long double
 #define all(x) x.begin(), x.end()
@@ -11,25 +10,29 @@
 
 using namespace std;
 
-ll LCM(ll a, ll b)
-{
-    return (a / __gcd(a, b)) * b;
-}
-
 int main()
 {
     fastIO();
 
-    ll n, a, b, p, q;
-    cin >> n >> a >> b >> p >> q;
+    int n;
+    cin >> n;
+    while (n--)
+    {
+        ll a, b;
+        cin >> a >> b;
+        long long ans = 1;
 
-    ll divisableA = (n / a) * p;
-    ll divisableB = (n / b) * q;
+        while (b > 0)
+        {
+            if (b & 1)
+                ans *= a;
 
-    ll common = (n / LCM(a,b));
-    ll ans = (divisableA + divisableB) - common * (p + q) + common * max(p, q);
+            a *= a;
+            b >>= 1;
+        }
 
-    cout << ans << nl;
+        cout << ans << '\n';
+    }
 
     return 0;
 }
