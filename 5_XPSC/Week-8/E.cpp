@@ -10,32 +10,20 @@
 
 using namespace std;
 
-const int MOD = 1e9+7;
-int power(int x, int n)
-{
-    int ans = 1 % MOD;
-    while(n)
-    {
-        if(n & 1)
-            ans = (1LL * ans % MOD * x % MOD) % MOD;
-
-        x = 1LL * x * x % MOD;
-        n >>= 1;
-    }
-    return ans;
-}
-
+const int MOD = 1e9 + 7;
 int main()
 {
     fastIO();
 
-    int n;
-    cin >> n;
-    while (n--)
+    int t; cin >> t;
+    while(t--)
     {
-        int x, n;
-        cin >> x >> n;
-        cout << power(x,n) << nl;
+        int n; cin >> n;
+        int ans = 1;
+        for(int i = 1; i <= n; i++)
+            ans = (1LL * ans % MOD * i % MOD) % MOD;
+        
+        cout << ans << nl;
     }
 
     return 0;
