@@ -17,28 +17,23 @@ int main()
     int t; cin >> t;
     while(t--)
     {
-        int x, y; cin >> x >> y;
+        int l, r; cin >> l >> r;
 
         bool ok = false;
-        while(x <= y)
+        for(int n = l; n <= r; n++)
         {
-            int k = (x + 1) / 2;
-            if(k + k >= x && k + k <= y)
+            for(int i = 2; i*i <= n; i++)
             {
-                int GCD = __gcd(k, k);
-                if(GCD != 1)
+                if(n%i == 0)
                 {
-                    cout << k << " " << k << nl;
+                    cout << i << " " << n-i << nl;
                     ok = true;
                     break;
                 }
-                else x+=1;
             }
-            else break;
+            if(ok) break;
         }
         if(!ok) cout << -1 << nl;
-
-        // x, y same and odd hole problem
     }
 
     return 0;
