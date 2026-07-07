@@ -19,28 +19,36 @@ int main()
     {
         int n, q; cin >> n >> q;
         vector<int> a(n);
-        for(int &i : a) cin >> i;
+        ll sum = 0;
+        for(int &i : a) {cin >> i; sum+=i; }
+        sort(a.begin(), a.end());
 
         while(q--)
         {
             int key; cin >> key;
-            int l = 0, r = n-1, ans = 0, cnt = 0;
+
+            if(key > sum)
+            {
+                cout << -1 << nl;
+                continue;
+            }
+
+            ll l = 0, r = n-1, ans = 0, cnt = 0;
             while(l <= r)
             {
                 if(ans >= key) break;
-                if(a[r]+ans <= key)
+                if(ans < key)
                 {
                     ans+=a[r];
                     cnt++;
                     r--;
                 }
-                else{
-                    ans+=a[l];
-                    cnt++;
-                    l++;
-                }
             }
-            cout << cnt << nl;
+
+            // if(ans >= key)
+                cout << cnt << nl;
+            // else cout << -1 << nl;
+            // cout << cnt << " -> " << ans << nl;
         }
     }
 
