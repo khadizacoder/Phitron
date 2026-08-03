@@ -18,13 +18,20 @@ int main()
     vector<int> a(n);
     for(auto &i : a) cin >> i;
 
-    for(int i = 0; i < n; i++)
-    {
-        for(int j = i; j < n-k; j++)
-        {
-            
+    // Sliding window
+    int l = 0, r = 0, cnt = 0, ans = 0;
+    while(r < n){
+        cnt++;
+        if(cnt <= k && r < n){
+            ans+= r-l+1;
+            r++;
+        }
+        else{
+            l++;
+            cnt--;
         }
     }
+    cout << ans << nl;
 
     return 0;
 }
