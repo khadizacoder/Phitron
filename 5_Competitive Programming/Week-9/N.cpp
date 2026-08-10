@@ -19,18 +19,26 @@ int main()
     for(auto &i : a) cin >> i;
 
     // Sliding window
-    int l = 0, r = 0, cnt = 0, ans = 0;
+    ll l = 0, r = 0, ans = 0;
+    map<int,int> freq;
+
     while(r < n){
-        cnt++;
-        if(cnt <= k && r < n){
-            ans+= r-l+1;
-            r++;
-        }
-        else{
+        freq[a[r]]++;
+
+        while (freq.size() > k)
+        {
+            freq[a[l]]--;
+
+            if(freq[a[l]] == 0)
+                freq.erase(a[l]);
+
             l++;
-            cnt--;
         }
+
+        ans+=r-l+1;
+        r++;
     }
+
     cout << ans << nl;
 
     return 0;
