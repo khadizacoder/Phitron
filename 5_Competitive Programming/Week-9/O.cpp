@@ -10,45 +10,39 @@
 
 using namespace std;
 
+int n; 
+vector<ll> a;
+ll ans = LLONG_MAX, total = 0;
+
+void solve(int index, ll group1)
+{
+    if(n == index)
+    {
+        ll group2 = total - group1;
+        ll dif = abs(group1 - group2);
+        ans = min(ans, dif);
+        return;
+    }
+
+    solve(index+1, group1 + a[index]);
+    solve(index+1, group1);
+}
+
 int main()
 {
     fastIO();
 
-    int n;
     cin >> n;
-    vector<int> a(n);
-    int totalSum = 0;
-    for (auto &i : a)
+    a.resize(n);
+    for(int i = 0; i < n; i++)
     {
-        cin >> i;
-        totalSum += i;
+        cin >> a[i];
+        total+=a[i];
     }
 
-    int x = (totalSum + 1) / 2;
-    sort(all(a));
-    ll l = 0, r = n - 2, ans = a[n - 1];
-    while (l <= r)
-    {
-        if (ans <= x)
-        {
-            if (ans + a[r] <= x)
-            {
-                ans += a[r];
-                r--;
-            }
-            else
-            {
-                if(a[l]+ans <= x){
-                    ans += a[l];
-                    l++;
-                }
-                else break;
-            }
-        }
-        else break;
-    }
+    solve(0, 0);
+    cout << ans << "\n";
 
-    cout << abs(x-ans) << nl;
 
     return 0;
 }
